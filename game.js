@@ -1,34 +1,52 @@
-let dinero = 0
-let maquinas = 1
+let money = 0
+let machines = 0
+let speed = 1000
 
-function actualizar(){
-document.getElementById("money").innerText = "Dinero: "+dinero
+function update(){
+
+document.getElementById("money").innerText = "Dinero: "+money
+
+document.getElementById("stats").innerText =
+"Máquinas: "+machines
+
+}
+
+function tap(){
+
+money += 1
+update()
+
+}
+
+function buyMachine(){
+
+if(money >= 50){
+
+money -= 50
+machines++
+
+}
+
+update()
+
+}
+
+function upgrade(){
+
+if(money >= 100){
+
+money -= 100
+speed -= 50
+
+}
+
+update()
+
 }
 
 setInterval(()=>{
 
-dinero += maquinas
-
-actualizar()
+money += machines
+update()
 
 },1000)
-
-function comprarMaquina(){
-
-if(dinero >= 50){
-
-dinero -= 50
-maquinas++
-
-let nueva = document.createElement("div")
-
-nueva.className = "maquina"
-
-nueva.style.left = Math.random()*500+"px"
-nueva.style.top = Math.random()*300+"px"
-
-document.getElementById("mapa").appendChild(nueva)
-
-}
-
-}
