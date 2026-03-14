@@ -1,42 +1,34 @@
 let dinero = 0
-let produccion = 0
+let maquinas = 1
 
 function actualizar(){
-document.getElementById("money").innerText = dinero
-}
-
-function ganar(){
-dinero += 1
-actualizar()
-}
-
-function comprar(){
-if(dinero >= 50){
-dinero -= 50
-produccion += 1
-}
+document.getElementById("money").innerText = "Dinero: "+dinero
 }
 
 setInterval(()=>{
-dinero += produccion
+
+dinero += maquinas
+
 actualizar()
+
 },1000)
 
-async function guardar(){
-await fetch("/save",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({dinero:dinero})
-})
+function comprarMaquina(){
+
+if(dinero >= 50){
+
+dinero -= 50
+maquinas++
+
+let nueva = document.createElement("div")
+
+nueva.className = "maquina"
+
+nueva.style.left = Math.random()*500+"px"
+nueva.style.top = Math.random()*300+"px"
+
+document.getElementById("mapa").appendChild(nueva)
+
 }
 
-setInterval(guardar,5000)
-
-async function cargar(){
-let r = await fetch("/load")
-let data = await r.json()
-dinero = data.dinero
-actualizar()
 }
-
-cargar()
