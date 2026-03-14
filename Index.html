@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tycoon Factory</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Khasam Factory</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🏭 Tycoon Factory</h1>
+<h1>🏭 Khasam Factory</h1>
 
 <div id="money">Dinero: 0</div>
 
-<div id="mapa">
+<button onclick="tap()">Tap +1</button>
 
-<div class="maquina" id="m1"></div>
-<div class="cinta"></div>
-<div class="cinta"></div>
-<div class="caja"></div>
+<h2>⚙ Panel máquinas</h2>
+<button onclick="buyMachine()">Comprar máquina (50)</button>
 
-</div>
+<h2>🚀 Panel mejoras</h2>
+<button onclick="upgrade()">Velocidad +5% (100)</button>
 
-<button onclick="comprarMaquina()">Comprar máquina</button>
+<h2>📊 Panel stats</h2>
+<div id="stats"></div>
 
-<script src="js/game.js"></script>
+<script src="game.js"></script>
 
 </body>
 </html>
