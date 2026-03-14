@@ -1,7 +1,5 @@
 let money = 0
-
 let cpu = 0
-
 let cpuLevel = 1
 
 const prices = {
@@ -12,11 +10,51 @@ const prices = {
 
 }
 
+/* cargar progreso */
+
+function loadGame(){
+
+let save = localStorage.getItem("khasamTycoon")
+
+if(save){
+
+let data = JSON.parse(save)
+
+money = data.money
+cpu = data.cpu
+cpuLevel = data.cpuLevel
+
+spawnCPU(cpu)
+
+}
+
+}
+
+/* guardar progreso */
+
+function saveGame(){
+
+let data = {
+
+money:money,
+cpu:cpu,
+cpuLevel:cpuLevel
+
+}
+
+localStorage.setItem("khasamTycoon",JSON.stringify(data))
+
+}
+
+/* actualizar UI */
+
 function updateUI(){
 
 document.getElementById("oro").innerText = "💰 "+Math.floor(money)
 
 }
+
+/* tap */
 
 function tap(){
 
@@ -25,6 +63,8 @@ money += 1
 updateUI()
 
 }
+
+/* comprar cpu */
 
 function buyCPU(amount){
 
@@ -44,6 +84,8 @@ updateUI()
 
 }
 
+/* crear cpu */
+
 function spawnCPU(amount){
 
 for(let i=0;i<amount;i++){
@@ -59,6 +101,8 @@ document.getElementById("factory").appendChild(cpuDiv)
 }
 
 }
+
+/* mejorar cpu */
 
 function upgradeCPU(){
 
@@ -76,6 +120,8 @@ updateUI()
 
 }
 
+/* producción automática */
+
 setInterval(()=>{
 
 money += cpu * cpuLevel
@@ -83,3 +129,17 @@ money += cpu * cpuLevel
 updateUI()
 
 },1000)
+
+/* autoguardado */
+
+setInterval(()=>{
+
+saveGame()
+
+},5000)
+
+/* cargar al iniciar */
+
+loadGame()
+
+updateUI()
