@@ -1,15 +1,144 @@
-.tap{
+body{
 
-font-size:20px;
+margin:0;
+padding:0;
+
+font-family:monospace;
+
+color:white;
+
+text-align:center;
+
+background:black;
+
+overflow-x:hidden;
+
+}
+
+/* estrellas */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background-image:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(cyan 1px, transparent 1px),
+radial-gradient(gold 1px, transparent 1px);
+
+background-size:
+40px 40px,
+60px 60px,
+80px 80px;
+
+opacity:0.5;
+
+z-index:-1;
+
+animation:starsMove 60s linear infinite;
+
+}
+
+@keyframes starsMove{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-2000px);
+}
+
+}
+
+/* panel */
+
+.panel{
+
+background:#111;
+
+border:2px solid cyan;
+
+border-radius:10px;
+
+margin:20px auto;
 
 padding:15px;
 
-margin:20px;
+width:80%;
+
+max-width:400px;
+
+box-shadow:0 0 15px cyan;
+
+}
+
+/* botones */
+
+button{
 
 background:black;
 
 border:2px solid cyan;
 
 color:cyan;
+
+padding:12px;
+
+margin:8px;
+
+font-size:16px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+button:hover{
+
+background:cyan;
+
+color:black;
+
+}
+
+/* botón tap */
+
+.tap{
+
+font-size:24px;
+
+padding:20px;
+
+border:3px solid gold;
+
+color:gold;
+
+box-shadow:0 0 15px gold;
+
+}
+
+/* título */
+
+h1{
+
+text-shadow:0 0 10px cyan;
+
+}
+
+/* fábrica */
+
+#factory{
+
+margin-top:20px;
 
 }
