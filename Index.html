@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Khasam Factory</title>
-<link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Khasam CPU Tycoon</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/maquina.css">
+<link rel="stylesheet" href="css/oro.css">
+
 </head>
 
 <body>
 
-<h1>🏭 Khasam Factory</h1>
+<h1>🚀 KHASAM CPU TYCOON</h1>
 
-<div id="money">Dinero: 0</div>
+<div id="oro">💰 0</div>
 
-<button onclick="tap()">Tap +1</button>
+<div class="panel">
 
-<h2>⚙ Panel máquinas</h2>
-<button onclick="buyMachine()">Comprar máquina (50)</button>
+<h2>⚙ Panel de Máquinas</h2>
 
-<h2>🚀 Panel mejoras</h2>
-<button onclick="upgrade()">Velocidad +5% (100)</button>
+<button onclick="buyCPU(1)">CPU x1</button>
+<button onclick="buyCPU(5)">CPU x5</button>
+<button onclick="buyCPU(10)">CPU x10</button>
 
-<h2>📊 Panel stats</h2>
-<div id="stats"></div>
+</div>
 
+<div class="panel">
+
+<h2>📈 Mejoras</h2>
+
+<button onclick="upgradeCPU()">Mejorar CPU</button>
+
+</div>
+
+<div id="factory"></div>
+
+<script src="config.js"></script>
 <script src="game.js"></script>
 
 </body>
