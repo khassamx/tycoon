@@ -1,52 +1,59 @@
 let money = 0
-let machines = 0
-let speed = 1000
+let cpu = 0
+let cpuLevel = 1
 
-function update(){
+function updateUI(){
 
-document.getElementById("money").innerText = "Dinero: "+money
-
-document.getElementById("stats").innerText =
-"Máquinas: "+machines
+document.getElementById("oro").innerText = "💰 "+Math.floor(money)
 
 }
 
-function tap(){
+function buyCPU(amount){
 
-money += 1
-update()
+let price = GAME_CONFIG.cpu_base_price * amount
 
-}
+if(money >= price){
 
-function buyMachine(){
+money -= price
+cpu += amount
 
-if(money >= 50){
-
-money -= 50
-machines++
+spawnCPU(amount)
 
 }
 
-update()
+}
+
+function spawnCPU(amount){
+
+for(let i=0;i<amount;i++){
+
+let cpuDiv = document.createElement("div")
+
+cpuDiv.className = "cpu"
+
+cpuDiv.innerText = "🖥"
+
+document.getElementById("factory").appendChild(cpuDiv)
 
 }
 
-function upgrade(){
-
-if(money >= 100){
-
-money -= 100
-speed -= 50
-
 }
 
-update()
+function upgradeCPU(){
+
+if(money >= GAME_CONFIG.upgrade_price){
+
+money -= GAME_CONFIG.upgrade_price
+cpuLevel++
+
+}
 
 }
 
 setInterval(()=>{
 
-money += machines
-update()
+money += cpu * GAME_CONFIG.cpu_income * cpuLevel
+
+updateUI()
 
 },1000)
