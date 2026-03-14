@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tycoon Farm</title>
-<link rel="stylesheet" href="style.css">
+<title>Tycoon Factory</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<h1>Tycoon Farm</h1>
+<h1>🏭 Tycoon Factory</h1>
 
-<div id="money">0</div>
+<div id="money">Dinero: 0</div>
 
-<button onclick="ganar()">Tap +1</button>
-<button onclick="comprar()">Comprar máquina (50)</button>
+<div id="mapa">
 
-<script src="game.js"></script>
+<div class="maquina" id="m1"></div>
+<div class="cinta"></div>
+<div class="cinta"></div>
+<div class="caja"></div>
+
+</div>
+
+<button onclick="comprarMaquina()">Comprar máquina</button>
+
+<script src="js/game.js"></script>
 
 </body>
 </html>
