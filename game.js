@@ -1,6 +1,16 @@
 let money = 0
+
 let cpu = 0
+
 let cpuLevel = 1
+
+const prices = {
+
+1:50,
+5:100,
+10:200
+
+}
 
 function updateUI(){
 
@@ -8,18 +18,29 @@ document.getElementById("oro").innerText = "💰 "+Math.floor(money)
 
 }
 
+function tap(){
+
+money += 1
+
+updateUI()
+
+}
+
 function buyCPU(amount){
 
-let price = GAME_CONFIG.cpu_base_price * amount
+let price = prices[amount]
 
 if(money >= price){
 
 money -= price
+
 cpu += amount
 
 spawnCPU(amount)
 
 }
+
+updateUI()
 
 }
 
@@ -41,18 +62,23 @@ document.getElementById("factory").appendChild(cpuDiv)
 
 function upgradeCPU(){
 
-if(money >= GAME_CONFIG.upgrade_price){
+let price = 200
 
-money -= GAME_CONFIG.upgrade_price
+if(money >= price){
+
+money -= price
+
 cpuLevel++
 
 }
+
+updateUI()
 
 }
 
 setInterval(()=>{
 
-money += cpu * GAME_CONFIG.cpu_income * cpuLevel
+money += cpu * cpuLevel
 
 updateUI()
 
