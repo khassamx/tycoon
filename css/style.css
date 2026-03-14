@@ -1,89 +1,88 @@
 body{
-margin:0;
-padding:0;
-font-family:monospace;
-color:white;
-text-align:center;
-background:black;
-overflow-x:hidden;
-background-image:radial-gradient(white 1px, transparent 1px),
-                  radial-gradient(cyan 1px, transparent 1px),
-                  radial-gradient(gold 1px, transparent 1px);
-background-size:40px 40px,60px 60px,80px 80px;
-animation:starsMove 60s linear infinite;
+  margin:0;
+  padding:0;
+  font-family:monospace;
+  color:white;
+  text-align:center;
+  background:black;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(cyan 1px, transparent 1px),
+    radial-gradient(gold 1px, transparent 1px);
+  background-size:40px 40px,60px 60px,80px 80px;
+  animation:starsMove 60s linear infinite;
 }
 
 @keyframes starsMove{
-0%{background-position:0 0,0 0,0 0;}
-100%{background-position:0 -2000px,0 -3000px,0 -4000px;}
+  0%{background-position:0 0,0 0,0 0;}
+  100%{background-position:0 -2000px,0 -3000px,0 -4000px;}
 }
 
 .panel{
-background:#111;
-border:2px solid cyan;
-border-radius:10px;
-margin:20px auto;
-padding:15px;
-width:80%;
-max-width:400px;
-box-shadow:0 0 15px cyan;
+  background:#111;
+  border:2px solid cyan;
+  border-radius:10px;
+  margin:20px auto;
+  padding:15px;
+  width:80%;
+  max-width:400px;
+  box-shadow:0 0 15px cyan;
 }
 
 button{
-background:black;
-border:2px solid cyan;
-color:cyan;
-padding:12px;
-margin:8px;
-font-size:16px;
-border-radius:6px;
-cursor:pointer;
-transition:0.2s;
+  background:black;
+  border:2px solid cyan;
+  color:cyan;
+  padding:12px;
+  margin:8px;
+  font-size:16px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
 }
 
 button:hover{
-background:cyan;
-color:black;
+  background:cyan;
+  color:black;
 }
 
 .tap{
-font-size:24px;
-padding:20px;
-border:3px solid gold;
-color:gold;
-box-shadow:0 0 15px gold;
+  font-size:24px;
+  padding:20px;
+  border:3px solid gold;
+  color:gold;
+  box-shadow:0 0 15px gold;
 }
 
 h1{
-text-shadow:0 0 10px cyan;
+  text-shadow:0 0 10px cyan;
 }
 
 #factory{
-margin-top:20px;
-position:relative;
-width:90%;
-height:400px;
-margin:auto;
-border:2px solid #0ff;
-background:rgba(0,0,0,0.5);
-overflow:hidden;
+  margin-top:20px;
+  position:relative;
+  width:90%;
+  height:500px;
+  margin:auto;
+  border:2px solid #0ff;
+  background:rgba(0,0,0,0.5);
+  overflow:hidden;
 }
 
-/* CPU niveles */
+/* CPU niveles con colores */
 .cpu{
-display:inline-block;
-width:50px;
-height:50px;
-margin:10px;
-font-size:30px;
-animation:cpuPulse 2s infinite;
-position:absolute;
-border-radius:10px;
-text-align:center;
-line-height:50px;
-color:white;
-font-weight:bold;
-box-shadow:0 0 10px white;
+  width:50px;
+  height:50px;
+  position:absolute;
+  border-radius:10px;
+  text-align:center;
+  line-height:50px;
+  font-weight:bold;
+  color:white;
+  font-size:30px;
+  box-shadow:0 0 10px white;
+  animation:floatCPU 4s ease-in-out infinite alternate;
 }
 
 .cpu.level1{background:#555;}
@@ -92,30 +91,62 @@ box-shadow:0 0 10px white;
 .cpu.level4{background:#ff0;}
 .cpu.level5{background:#f90;}
 
-@keyframes cpuPulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.2)}
-100%{transform:scale(1)}
+/* flotación CPU */
+@keyframes floatCPU{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+
+/* efecto fusión */
+.cpu.merge-effect {
+  animation: mergePulse 0.8s ease-out;
+  box-shadow: 0 0 20px gold, 0 0 40px cyan;
+  transform: scale(1.5);
+  z-index: 999;
+}
+
+@keyframes mergePulse {
+  0% { transform: scale(1); opacity:1; box-shadow:0 0 10px white; }
+  50% { transform: scale(2); opacity:0.7; box-shadow:0 0 40px gold,0 0 60px cyan; }
+  100% { transform: scale(1.2); opacity:1; box-shadow:0 0 20px gold,0 0 40px cyan; }
+}
+
+/* partículas chispa */
+.particle {
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:yellow;
+  border-radius:50%;
+  opacity:0.8;
+  pointer-events:none;
+  animation:particleAnim 0.8s linear forwards;
+}
+
+@keyframes particleAnim{
+  0%{transform:translate(0,0) scale(1); opacity:1;}
+  100%{transform:translate(var(--dx), var(--dy)) scale(0.5); opacity:0;}
 }
 
 /* cajas moviéndose */
 .caja{
-width:40px;
-height:40px;
-background:url('../img/caja.png') no-repeat center;
-background-size:contain;
-position:absolute;
-animation:cajaMove 5s linear infinite;
+  width:40px;
+  height:40px;
+  background:url('../img/caja.png') no-repeat center;
+  background-size:contain;
+  position:absolute;
+  animation:cajaMove 5s linear infinite;
 }
 
 @keyframes cajaMove{
-0%{left:0px;}
-100%{left:90%;}
+  0%{left:0px;}
+  100%{left:90%;}
 }
 
 #oro{
-font-size:30px;
-color:gold;
-text-shadow:0 0 10px gold;
-margin:20px;
+  font-size:30px;
+  color:gold;
+  text-shadow:0 0 10px gold;
+  margin:20px;
 }
